@@ -28,13 +28,14 @@ export type ResponseConfig<TData = unknown> = {
 }
 
 export const axiosInstance = axios.create({
-  baseURL: typeof AXIOS_BASE !== 'undefined' ? AXIOS_BASE : undefined,
+  // baseURL: typeof AXIOS_BASE !== 'undefined' ? AXIOS_BASE : undefined,
   headers: typeof AXIOS_HEADERS !== 'undefined' ? (JSON.parse(AXIOS_HEADERS) as AxiosHeaders) : undefined,
 })
 
 export const axiosClient = async <TData, TError = unknown, TVariables = unknown>(config: RequestConfig<TVariables>): Promise<ResponseConfig<TData>> => {
   const promise = axiosInstance.request<TVariables, ResponseConfig<TData>>({ ...config, 
-    withCredentials: true
+    withCredentials: true,
+    baseURL : "localhost:3000"
    }).catch((e: AxiosError<TError>) => {
     throw e
   })
