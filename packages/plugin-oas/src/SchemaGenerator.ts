@@ -671,7 +671,8 @@ export abstract class SchemaGenerator<
             keyword: schemaKeywords.const,
             args: {
               name: schema['const'],
-              format: typeof schema['const'] === 'number' ? 'number' : 'string',
+              // format: typeof schema['const'] === 'number' ? 'number' : schema['const'],
+              format : schema['const'],
               value: schema['const'],
             },
           },
