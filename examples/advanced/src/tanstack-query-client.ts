@@ -33,7 +33,9 @@ export const axiosInstance = axios.create({
 })
 
 export const axiosClient = async <TData, TError = unknown, TVariables = unknown>(config: RequestConfig<TVariables>): Promise<ResponseConfig<TData>> => {
-  const promise = axiosInstance.request<TVariables, ResponseConfig<TData>>({ ...config }).catch((e: AxiosError<TError>) => {
+  const promise = axiosInstance.request<TVariables, ResponseConfig<TData>>({ ...config, 
+    withCredentials: true
+   }).catch((e: AxiosError<TError>) => {
     throw e
   })
 

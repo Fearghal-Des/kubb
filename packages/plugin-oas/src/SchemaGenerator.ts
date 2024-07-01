@@ -674,7 +674,7 @@ export abstract class SchemaGenerator<
               name: schema['const'],
               // format: typeof schema['const'] === 'number' ? 'number' : schema['const'],
               format : schema['const'],
-              value: "Potato",
+              value: schema['const'],
             },
           },
           ...baseItems,
