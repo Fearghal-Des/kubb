@@ -474,14 +474,15 @@ export abstract class SchemaGenerator<
 
       const union: Schema = {
         keyword: schemaKeywords.union,
-        args: schema.oneOf
-          .map((item) => {
-            return item && this.parse({ schema: item as SchemaObject, name, parentName })[0]
-          })
-          .filter(Boolean)
-          .filter((item) => {
-            return item && item.keyword !== unknownReturn
-          }),
+        // args: schema.oneOf
+        //   .map((item) => {
+        //     return item && this.parse({ schema: item as SchemaObject, name, parentName })[0]
+        //   })
+        //   .filter(Boolean)
+        //   .filter((item) => {
+        //     return item && item.keyword !== unknownReturn
+        //   }),
+        args : sc
       }
       if (schemaWithoutOneOf.properties) {
         return [...this.parse({ schema: schemaWithoutOneOf, name, parentName }), union, ...baseItems]
@@ -673,7 +674,7 @@ export abstract class SchemaGenerator<
               name: schema['const'],
               // format: typeof schema['const'] === 'number' ? 'number' : schema['const'],
               format : schema['const'],
-              value: schema['const'],
+              value: "Potato",
             },
           },
           ...baseItems,
